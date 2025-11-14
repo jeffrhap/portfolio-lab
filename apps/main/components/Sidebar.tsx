@@ -1,13 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { Terminal } from "lucide-react";
+import { Terminal, X } from "lucide-react";
 import { experiments } from "@portfolio-labs/shared-types";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export function Sidebar() {
+interface SidebarProps {
+  onClose?: () => void;
+}
+
+export function Sidebar({ onClose }: SidebarProps) {
   const [filter, setFilter] = useState("All");
   const pathname = usePathname();
   const currentId = pathname.split("/").pop();
@@ -16,14 +20,25 @@ export function Sidebar() {
   const filteredExperiments = filter === "All" ? experiments : experiments.filter((e) => e.category === filter);
 
   return (
-    <aside className="w-64 bg-black overflow-y-auto flex flex-col border-r border-gray-900">
+    <aside className="w-full md:w-64 bg-black overflow-y-auto flex flex-col border-r border-gray-900 h-screen relative">
       <div className="p-4">
-        <Link href="/">
-          <h1 className="text-lg font-bold flex items-center cursor-pointer ">
-            <Terminal className="w-5 h-5 text-green-400" />
-            <span className="text-white hover:text-green-400 transition-colors">jeffrey</span>
-          </h1>
-        </Link>
+        <div className="flex items-center justify-between">
+          <Link href="/" onClick={onClose}>
+            <h1 className="text-lg font-bold flex items-center cursor-pointer ">
+              <Terminal className="w-5 h-5 text-green-400" />
+              <span className="text-white hover:text-green-400 transition-colors">jeffrey</span>
+            </h1>
+          </Link>
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="md:hidden text-gray-400 hover:text-gray-200 transition-colors"
+              aria-label="Close sidebar"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          )}
+        </div>
         <p className="text-xs text-gray-600 mt-1 font-mono">lab / experiments</p>
       </div>
 
@@ -46,6 +61,7 @@ export function Sidebar() {
             <Link
               key={exp.id}
               href={`/${exp.id}`}
+              onClick={onClose}
               className={`flex flex-col gap-2 rounded overflow-hidden transition-all ${
                 currentId === exp.id ? "ring-1 ring-green-400/60" : "hover:ring-2 hover:ring-green-400/50"
               }`}

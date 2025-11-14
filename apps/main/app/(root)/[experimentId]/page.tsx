@@ -1,5 +1,6 @@
 import { experimentMap } from "@portfolio-labs/shared-types";
 import Welcome from "@/components/experiments/welcome";
+import { BackButton } from "@/components/BackButton";
 
 export default async function ExperimentPage({ params }: { params: Promise<{ experimentId: string }> }) {
   const { experimentId } = await params;
@@ -12,18 +13,26 @@ export default async function ExperimentPage({ params }: { params: Promise<{ exp
   // For subdomain experiments, load in iframe (full size, no title)
   if (experiment.subdomain) {
     return (
-      <iframe
-        src={`https://${experiment.subdomain}.portfolio-labs.com/${experiment.id}`}
-        className="w-screen h-screen border-0 -m-8"
-        title={experiment.name}
-        sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-      />
+      <div className="relative w-full h-full">
+        <BackButton />
+        <iframe
+          src={`https://${experiment.subdomain}.portfolio-labs.com/${experiment.id}`}
+          className="w-screen h-screen border-0 -m-8"
+          title={experiment.name}
+          sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+        />
+      </div>
     );
   }
 
   // For inline React experiments
   if (experiment.componentPath === "experiments/welcome") {
-    return <Welcome />;
+    return (
+      <div className="relative">
+        <BackButton />
+        <Welcome />
+      </div>
+    );
   }
 
   return <div>Experiment component not found</div>;
