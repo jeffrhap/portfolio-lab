@@ -1,0 +1,26 @@
+{
+  "$schema": "https://turbo.build/json-schema.json",
+  "globalDependencies": ["tsconfig.json", "tailwind.config.ts"],
+  "tasks": {
+    "build": {
+      "outputs": [".next/**", "dist/**", "build/**"],
+      "cache": true,
+      "dependsOn": ["^build"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["^build"]
+    },
+    "lint": {
+      "outputs": [".eslintcache"],
+      "cache": true
+    },
+    "format": {
+      "cache": false
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}
