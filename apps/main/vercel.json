@@ -1,9 +1,0 @@
-{
-  "version": 2,
-  "buildCommand": "npm run generate:registry && turbo run build --filter=main",
-  "outputDirectory": ".next",
-  "framework": "nextjs",
-  "env": {
-    "NODE_OPTIONS": "--max-old-space-size=4096"
-  }
-}

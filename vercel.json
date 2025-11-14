@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "projects": [
+    {
+      "name": "portfolio-labs-main",
+      "use": "@vercel/next",
+      "rootDirectory": "apps/main",
+      "buildCommand": "npm run generate:registry && npm run build -w apps/main"
+    }
+  ]
+}
