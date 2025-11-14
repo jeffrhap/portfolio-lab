@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Terminal } from "lucide-react";
-import { experiments } from "@/components/experiments";
+import { experiments } from "@portfolio-labs/shared-types";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

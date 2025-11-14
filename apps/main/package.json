@@ -12,7 +12,8 @@
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "next": "16.0.0",
-    "lucide-react": "^0.541.0"
+    "lucide-react": "^0.541.0",
+    "@portfolio-labs/shared-types": "*"
   },
   "devDependencies": {
     "typescript": "^5",

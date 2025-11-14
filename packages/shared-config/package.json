@@ -1,0 +1,9 @@
+{
+  "name": "@portfolio-labs/shared-config",
+  "version": "1.0.0",
+  "private": true,
+  "files": [
+    "tailwind.config.ts",
+    "postcss.config.mjs"
+  ]
+}
