@@ -16,7 +16,7 @@ export default async function ExperimentPage({ params }: { params: Promise<{ exp
       <div className="relative w-full h-full">
         <BackButton />
         <iframe
-          src={`https://${experiment.subdomain}.portfolio-labs.com/${experiment.id}`}
+          src={experiment.subdomain}
           className="w-screen h-screen border-0 -m-8"
           title={experiment.name}
           sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
