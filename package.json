@@ -1,0 +1,26 @@
+{
+  "name": "portfolio-labs",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "npm run generate:registry && turbo run build",
+    "generate:registry": "tsx scripts/generate-experiments-registry.ts",
+    "create:experiment": "tsx scripts/create-experiment.ts",
+    "lint": "turbo run lint",
+    "format": "turbo run format",
+    "clean": "turbo clean"
+  },
+  "devDependencies": {
+    "tsx": "^4.20.6",
+    "turbo": "^2.6.0"
+  },
+  "packageManager": "npm@11.6.2",
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}
